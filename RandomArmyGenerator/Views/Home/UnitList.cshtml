@@ -1,0 +1,51 @@
+﻿@model RandomArmyGenerator.Models.UnitListModel
+@{
+    ViewData["Title"] = "Unit List";
+}
+<head>
+    <style>
+        .column {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .stat-bar {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="text-center">
+        @foreach (KeyValuePair<string, Faction> faction in Model.Factions)
+        {
+            <h1 class="display-4">@faction.Key</h1>
+            <div class="text-center stat-bar">
+                <div class="row">
+                    <div class="column">Type</div>
+                    <div class="column">Name</div>
+                    <div class="column">Gear</div>
+                    <div class="column">PointCost</div>
+                    <div class="column">Quantity</div>
+                </div>
+            </div>
+            @for (var unitIndex = 0; unitIndex < @faction.Value.UnitList.Count; unitIndex++)
+            {
+                <div class="row">
+                    <div class="column">@faction.Value.UnitList[unitIndex].Type</div>
+                    <div class="column">@faction.Value.UnitList[unitIndex].Name</div>
+                    <div class="column">@faction.Value.UnitList[unitIndex].Gear</div>
+                    <div class="column">@faction.Value.UnitList[unitIndex].PointCost</div>
+                    <div class="column">@faction.Value.UnitList[unitIndex].Quantity</div>
+                </div>
+            }
+        }
+    </div>
+</body>

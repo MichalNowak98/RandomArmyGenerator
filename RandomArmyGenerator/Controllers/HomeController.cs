@@ -23,9 +23,15 @@ namespace RandomArmyGenerator.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult GenerateArmies()
         {
             return View();
+        }
+
+        public IActionResult UnitList()
+        {
+            var factions = new UnitListModel();
+            return View(factions);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
